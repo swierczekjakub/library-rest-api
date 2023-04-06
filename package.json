@@ -1,0 +1,25 @@
+{
+   "name": "library-rest-api",
+   "version": "0.0.1",
+   "description": "",
+   "type": "commonjs",
+   "scripts": {
+      "start": "ts-node src/index.ts",
+      "start:dev": "tsnd src/index.ts"
+   },
+   "dependencies": {
+      "body-parser": "^1.19.1",
+      "dotenv": "^16.0.3",
+      "express": "^4.17.2",
+      "mysql": "^2.14.1",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.13"
+   },
+   "devDependencies": {
+      "@types/express": "^4.17.17",
+      "@types/node": "^16.18.23",
+      "ts-node": "^10.9.1",
+      "ts-node-dev": "^2.0.0",
+      "typescript": "4.5.2"
+   }
+}
