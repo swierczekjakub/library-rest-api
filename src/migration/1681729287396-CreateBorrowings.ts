@@ -25,7 +25,6 @@ export class CreateBorrowings1681729287396 implements MigrationInterface {
                 {
                     name: "bookId",
                     type: "varchar(36)",
-                    isUnique: true,
                 },
                 {
                     name: "readerId",
@@ -50,8 +49,14 @@ export class CreateBorrowings1681729287396 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey("Borrowings", "bookId");
-        await queryRunner.dropForeignKey("Borrowings", "readerId");
+        const borrowingTable = await queryRunner.getTable("Borrowings");
+
+        const bookFk = borrowingTable.foreignKeys.find(fk => fk.columnNames.indexOf("bookId") !== -1);
+        const readerFk = borrowingTable.foreignKeys.find(fk => fk.columnNames.indexOf("readerId") !== -1);
+
+        if (bookFk) await queryRunner.dropForeignKey("Borrowings", bookFk);
+        if (readerFk) await queryRunner.dropForeignKey("Borrowings", readerFk);
+
         await queryRunner.dropTable("Borrowings");
     }
 }
