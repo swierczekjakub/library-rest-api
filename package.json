@@ -5,7 +5,9 @@
    "type": "commonjs",
    "scripts": {
       "start": "ts-node src/index.ts",
-      "start:dev": "tsnd src/index.ts"
+      "start:dev": "tsnd src/index.ts",
+      "migrate:run": "npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
+      "migration:show" : "npx typeorm-ts-node-commonjs migration:show -d src/data-source.ts"
    },
    "dependencies": {
       "body-parser": "^1.19.1",
