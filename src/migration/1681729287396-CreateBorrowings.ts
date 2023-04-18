@@ -1,10 +1,10 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm"
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class CreateBorrowings1681729287396 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: "Borrowings",
+            name: "borrowings",
             columns: [
                 {
                     name: "id",
@@ -20,7 +20,7 @@ export class CreateBorrowings1681729287396 implements MigrationInterface {
                 {
                     name: "returnDate",
                     type: "timestamp",
-                    default: 'DATE_ADD(NOW(), INTERVAL 14 DAY)',
+                    default: 'CURRENT_TIMESTAMP',
                 },
                 {
                     name: "bookId",
@@ -33,30 +33,30 @@ export class CreateBorrowings1681729287396 implements MigrationInterface {
             ]
         }));
 
-        await queryRunner.createForeignKey("Borrowings", new TableForeignKey({
+        await queryRunner.createForeignKey("borrowings", new TableForeignKey({
             columnNames: ["bookId"],
             referencedColumnNames: ["id"],
-            referencedTableName: "Books",
+            referencedTableName: "books",
             onDelete: "CASCADE"
         }));
 
-        await queryRunner.createForeignKey("Borrowings", new TableForeignKey({
+        await queryRunner.createForeignKey("borrowings", new TableForeignKey({
             columnNames: ["readerId"],
             referencedColumnNames: ["id"],
-            referencedTableName: "Readers",
+            referencedTableName: "readers",
             onDelete: "CASCADE"
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        const borrowingTable = await queryRunner.getTable("Borrowings");
+        const borrowingTable = await queryRunner.getTable("borrowings");
 
         const bookFk = borrowingTable.foreignKeys.find(fk => fk.columnNames.indexOf("bookId") !== -1);
         const readerFk = borrowingTable.foreignKeys.find(fk => fk.columnNames.indexOf("readerId") !== -1);
 
-        if (bookFk) await queryRunner.dropForeignKey("Borrowings", bookFk);
-        if (readerFk) await queryRunner.dropForeignKey("Borrowings", readerFk);
+        if (bookFk) await queryRunner.dropForeignKey(borrowingTable, bookFk);
+        if (readerFk) await queryRunner.dropForeignKey(borrowingTable, readerFk);
 
-        await queryRunner.dropTable("Borrowings");
+        await queryRunner.dropTable(borrowingTable);
     }
 }
