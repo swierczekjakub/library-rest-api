@@ -23,12 +23,21 @@ export class CreateBorrowings1681729287396 implements MigrationInterface {
                     default: 'CURRENT_TIMESTAMP',
                 },
                 {
+                    name: "actualReturnDate",
+                    type: "timestamp",
+                    isNullable: true,
+                },
+                {
                     name: "bookId",
                     type: "varchar(36)",
+                    default: null,
+                    isNullable: true,
                 },
                 {
                     name: "readerId",
-                    type: "varchar(36)"
+                    type: "varchar(36)",
+                    default: null,
+                    isNullable: true,
                 }
             ]
         }));

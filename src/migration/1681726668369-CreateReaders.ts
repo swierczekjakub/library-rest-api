@@ -26,8 +26,8 @@ export class CreateReaders1681726668369 implements MigrationInterface {
                         type: "varchar(15)"
                     },
                     {
-                      name: "email",
-                      type: "varchar(255)",
+                        name: "email",
+                        type: "varchar(255)",
                     },
                     {
                         name: 'createdAt',
