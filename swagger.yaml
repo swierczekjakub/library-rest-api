@@ -1,0 +1,402 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Library API
+  contact: {}
+host: localhost:3000
+basePath: /api/v1
+securityDefinitions: {}
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /books:
+    get:
+      summary: Get All Books
+      tags:
+        - Book
+      operationId: GetAllBooks
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: Create Book
+      tags:
+        - Book
+      operationId: CreateBook
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateBookRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /books/{id}:
+    get:
+      summary: Get Single Book
+      tags:
+        - Book
+      operationId: GetSingleBook
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    patch:
+      summary: Update Book
+      tags:
+        - Book
+      operationId: UpdateBook
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdateBookRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: Delete Book
+      tags:
+        - Book
+      operationId: DeleteBook
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /readers:
+    get:
+      summary: Get All Readers
+      tags:
+        - Reader
+      operationId: GetAllReaders
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: Create Reader
+      tags:
+        - Reader
+      operationId: CreateReader
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateReaderRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /readers/{id}:
+    get:
+      summary: Get Single Reader
+      tags:
+        - Reader
+      operationId: GetSingleReader
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    patch:
+      summary: Update Reader
+      tags:
+        - Reader
+      operationId: UpdateReader
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdateReaderRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: Remove Reader
+      tags:
+        - Reader
+      operationId: RemoveReader
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /borrowings:
+    get:
+      summary: Get All Borrowings
+      tags:
+        - Borrowing
+      operationId: GetAllBorrowings
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: Create Borrowing
+      tags:
+        - Borrowing
+      operationId: CreateBorrowing
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateBorrowingRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /borrowings/{id}:
+    get:
+      summary: Get Single Borrowing
+      tags:
+        - Borrowing
+      operationId: GetSingleBorrowing
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: Remove Borrowing
+      tags:
+        - Borrowing
+      operationId: RemoveBorrowing
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /borrowings/test:
+    patch:
+      summary: Update Borrowing
+      tags:
+        - Borrowing
+      operationId: UpdateBorrowing
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdateBorrowingRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  CreateBookRequest:
+    title: CreateBookRequest
+    example:
+      title: Książka test
+      author: Testowy autor książki
+      test: Test
+      isbn: 978-83-0000-000-0
+      publisher: Test Wielki
+    type: object
+    properties:
+      title:
+        type: string
+      author:
+        type: string
+      test:
+        type: string
+      isbn:
+        type: string
+      publisher:
+        type: string
+    required:
+      - title
+      - author
+      - test
+      - isbn
+      - publisher
+  UpdateBookRequest:
+    title: UpdateBookRequest
+    example:
+      title: Zmieniona książka test
+      author: Zmieniony author test
+    type: object
+    properties:
+      title:
+        type: string
+      author:
+        type: string
+    required:
+      - title
+      - author
+  CreateReaderRequest:
+    title: CreateReaderRequest
+    example:
+      firstName: Testowy
+      lastName: Tester
+      phoneNumber: '+48123456789'
+      email: testowytester@gmail.com
+    type: object
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      phoneNumber:
+        type: string
+      email:
+        type: string
+    required:
+      - firstName
+      - lastName
+      - phoneNumber
+      - email
+  UpdateReaderRequest:
+    title: UpdateReaderRequest
+    example:
+      phoneNumber: '+48505505505'
+      lastName: Zmienione nazwisko testera
+    type: object
+    properties:
+      phoneNumber:
+        type: string
+      lastName:
+        type: string
+    required:
+      - phoneNumber
+      - lastName
+  CreateBorrowingRequest:
+    title: CreateBorrowingRequest
+    example:
+      bookId: a39412d6-e361-11ed-b385-d85ed3e24e98
+      readerId: c0e09c16-e362-11ed-b385-d85ed3e24e98
+    type: object
+    properties:
+      bookId:
+        type: string
+      readerId:
+        type: string
+    required:
+      - bookId
+      - readerId
+  UpdateBorrowingRequest:
+    title: UpdateBorrowingRequest
+    example:
+      readerId: 3ef94a14-e362-11ed-b385-d85ed3e24e98
+      bookId: d06af692-e361-11ed-b385-d85ed3e24e98
+    type: object
+    properties:
+      readerId:
+        type: string
+      bookId:
+        type: string
+    required:
+      - readerId
+      - bookId
+tags:
+  - name: Book
+  - name: Reader
+  - name: Borrowing
