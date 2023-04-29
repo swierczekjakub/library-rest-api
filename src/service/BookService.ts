@@ -29,7 +29,6 @@ export class BookService {
 
     async addBook(addBookDto: AddBookDto) {
         const book: Book = Object.assign(new Book(), addBookDto)
-        console.log(book);
 
         if (!book.id) book.id = uuidv4();
         if (!book.createdAt) book.createdAt = new Date();
