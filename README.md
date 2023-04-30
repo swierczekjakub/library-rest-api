@@ -17,12 +17,12 @@
 <!-- Konfiguracja projektu -->
 ## :key: Konfiguracja projektu
 
-W celu prawidłowego skonfigurowania projektu i połączenia z bazą danych należy utworzyć plik `.env` w głównym folderze projektu i odpowiednio go wypełnić w oparciu o opcje zawarte w pliku `data-source.ts`.
+W celu prawidłowego skonfigurowania projektu i połączenia z bazą danych należy utworzyć plik `.env` w głównym folderze projektu i odpowiednio go wypełnić w oparciu o opcje zawarte w pliku `data-source.ts`, które są zgodne z konfiguracja połaczenia do bazy danych. 
 
 <!-- Uruchomienie projektu -->
 ## 	:toolbox: Uruchomienie projektu
 
-W tym projekcie domyślnym menadżerem paczek jest NPM. Po stworzeniu bazy danych istnieje możliwość automatycznego stworzenia tabel za pomocą uruchomienia migracji lub zmiany opcji `synchronize: false` na `synchronize: true`. 
+W tym projekcie domyślnym menadżerem paczek jest NPM. Po stworzeniu bazy danych istnieje możliwość automatycznego stworzenia tabel za pomocą uruchomienia migracji lub zmiany opcji `synchronize: false` na `synchronize: true`. <b>Uwaga zarówno w przypadku `synchronize` jak i migracji stworzone zostaną jedynie tabele. Bazę danych należy stworzyć własnoręcznie.</b>
 Podczas pomyślnego uruchomienia lokalnego po przejsciu na adres http://localhost:3000 znajduje sie odnośnik z podpiętym swaggerem z listą endpointów aplikacji.
 
 <h3><b> Jako pierwsze zalecam uruchomienie migracji za pomoca npm run migrate:run, ponieważ stworzone tabele od razu zostaną wypełnione przykładowymi danymi na których bezpośrednio można testować aplikacje.</b></h3>
